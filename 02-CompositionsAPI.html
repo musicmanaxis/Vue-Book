@@ -11,12 +11,12 @@
         {{message}}: {{counter.count}}
     </div>
     <script type="module" >
-        import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        import {createApp, ref, reactive} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
         createApp({
             setup(){
-                const message="Hellow CompostionsAPI"
-                const counter={count:2}
+                const message=ref("Hellow CompostionsAPI")
+                const counter=reactive({count:10})  //값이 객체일경우 reactive를 사용
                 return{
                     message,
                     counter,
@@ -26,4 +26,9 @@
     </script>
     
 </body>
+<style>
+    h2{
+        color:yellow;
+        background-color: black;
+    }
 </html>
