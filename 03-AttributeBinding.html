@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial™-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+     <span v-bind:class="red11">This is Test</span>
+  </div>
+<script type="module" >
+  import {createApp, ref, reactive} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+  createApp({
+    setup(){
+      const red11=ref('red')
+      return{
+        red11,
+      }
+    }
+  }).mount({'#app'})
+</script>
+
+<style>
+  .red{
+    color:red;
+  }
+</style>
+  
+</body>
+</html>
