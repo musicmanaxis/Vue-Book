@@ -12,7 +12,8 @@
 <body>
   <div id="app">
      <span v-bind:class='red11'>This is Test</span>  <br>
-     <span :class='blue11'>This is Second Test</span>
+     <span :id="blue11">This is Second Test</span>
+     <!-- 콜론만 적어도 v-bind와 같은 효과 -->
   </div>
 <script type="module" >
   import {createApp, ref, reactive} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
@@ -33,9 +34,9 @@
   .red{
     color:red;
   }
-  .blue{
-    color:blue
-    bold
+  #blue{
+    color:blue;
+    font-size:20px;
   }
 </style>
 
