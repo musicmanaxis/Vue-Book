@@ -12,11 +12,12 @@
     </div>
     <script type="module" >
         import {createApp, ref, reactive} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-
+      
+        //ref:변수를 조작하기 위해서 사용, reactive:객체를 다루기 위해서 사용
         createApp({
             setup(){
                 const message=ref("Hellow CompostionsAPI")
-                const counter=reactive({count:10})  //값이 객체일경우 reactive를 사용
+                const counter=reactive({count:10})  //값이 객체일경우 reactive를 사용, 자바스크립트에서 객체는 {}를 사용 
                 return{
                     message,
                     counter,

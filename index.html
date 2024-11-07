@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+    <template>
+        <div ref="myDiv">
+          <p>Hello, World!</p>
+        </div>
+      </template>
+
     <div id="app">
         <button @click="count++">
             Count is : {{count}}
@@ -15,13 +21,20 @@
     <script type="module" >
        import { createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
-        createApp({
-            data(){
-                return{
-                    count:0
-                }
-            },
-        }).mount('#app')
+       export default {
+            setup() {
+            const myDiv = ref(null);
+            const count=ref(0);
+
+             // myDiv.value는 <div> 엘리먼트의 레퍼런스를 가리킵니다.
+    console.log(myDiv.value);
+
+    return {
+      myDiv,
+      count
+    };
+  },
+};
     </script>
 </body>
 </html>
