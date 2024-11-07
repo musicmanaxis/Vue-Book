@@ -4,10 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial™-scale=1.0">
   <title>Document</title>
+
 </head>
+
+<!-- 태그 속성을 동적 값에 바인딩하려면 v-bind 디렉티브를 사용합니다 
+     v-bind:의 콜론(:) 뒤의 부분은 태그의 속성을 지정하면 된다.-->
 <body>
   <div id="app">
-     <span v-bind:class="red11">This is Test</span>
+     <span v-bind:class='red11'>This is Test</span>  <br>
+     <span :class='blue11'>This is Second Test</span>
   </div>
 <script type="module" >
   import {createApp, ref, reactive} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
@@ -15,18 +20,25 @@
   createApp({
     setup(){
       const red11=ref('red')
+      const blue11=ref('blue')
       return{
         red11,
+        blue11,
       }
     }
-  }).mount({'#app'})
+  }).mount('#app')    
 </script>
 
 <style>
   .red{
     color:red;
   }
+  .blue{
+    color:blue
+    bold
+  }
 </style>
+
   
 </body>
 </html>
