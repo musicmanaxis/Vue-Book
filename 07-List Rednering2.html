@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <ul> 
+      <li v-for="item in myObject">{{item}} </li>
+  </ul>
+
+  <ul> 
+    <li v-for="(item, key) in myObject">{{key}}:{{item}}  </li>
+    <!-- 객체일때는 (itemm, key) 두번째 인자가 키로 가져온다.. -->
+</ul>
+
+<ul> 
+  <li v-for="(item, key, index) in myObject">{{index}}->{{key}}:{{item}}  </li>  
+  <!-- 객체일때는 (itemm, key, index) 세번째 인자가 인덱스로 가져온다.. -->
+</ul>
+
+<span v-for="num in 10">{{num}}</span>
+<!-- 이렇게 하면 숫자가 찍힌다. -->
+  </div>
+  <script type="module" >
+     import {createApp, ref, reactive} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+     createApp({
+        setup(){
+          const myObject=reactive({
+              title:'Axis Book',
+              author:'마종호',
+              publishAt:'2024-01-03'
+          })   //객체는 reactive()를 사용하여 {}로 표현한다. 
+          return{
+              myObject
+          }
+        }
+      }
+     ).mount('#app')
+  </script>
+</body>
+</html>
