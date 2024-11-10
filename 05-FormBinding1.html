@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- v-model을 설명하기 위한 예제이다...일단 이 이벤트가 어떻게 간단히 변화되는지 2개의 파일로 만들어보았다. 
+   -->
+  <div id="app">
+    <input :value="text11" @input="onInput" placeholder="값을 입력하세요"> <br>
+    <!-- input속성중 value는 input에 보여지는 값을 말한다.  -->
+    <span>{{text11}}</span>
+  </div>
+  <script type="module" >
+     import {createApp, ref, reactive} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+     createApp({
+      setup(){
+        const text11=ref('초기문자')
+        function onInput(e){
+          text11.value=e.target.value   //e.target : 이벤트가 발생한 요소를 의미
+          console.log("이벤트가 발생한 요소:"+e.target)
+        }
+        return{
+          text11,
+          onInput
+        }
+      }
+     }).mount('#app')
+  </script>
+</body>
+</html>
