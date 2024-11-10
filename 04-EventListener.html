@@ -10,6 +10,7 @@
     <button v-on:click="increment">숫자증가:{{countPlus}}</button>  <br>
     <!-- //이벤트를 붙일경우는 v-on:click="함수명"을 사용한다. -->
     <button @click="decrement">숫자감소:{{countMinus}}</button>
+     <!-- @만 적어도 v-on과 같은 효과 -->
   </div>
 
   <script type="module" >
@@ -21,8 +22,8 @@
         const countPlus=ref(10)
         const countMinus=ref(10)
         function increment(){
-          countPlus.value++
-                            }  //ref()를 쓴경우에는 value를 붙여서 사용한다.
+          countPlus.value++   //ref()를 쓴경우에는 value를 붙여서 사용한다.
+                            }  
         function decrement(){
           countMinus.value--
         }
