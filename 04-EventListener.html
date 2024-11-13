@@ -9,8 +9,15 @@
   <div id="app">
     <button v-on:click="increment">숫자증가:{{countPlus}}</button>  <br>
     <!-- //이벤트를 붙일경우는 v-on:click="함수명"을 사용한다. -->
-    <button @click="decrement">숫자감소:{{countMinus}}</button>
+    <button @click="decrement">숫자감소:{{countMinus}}</button> <br>
      <!-- @만 적어도 v-on과 같은 효과 -->
+
+
+     <!-- event.target와 event.currentTarget차이를 파악하기 위해 만든 버튼 -->
+     <button @click="onClick">
+      <span>Click!</span>
+    </button>
+
   </div>
 
   <script type="module" >
@@ -21,18 +28,28 @@
       setup(){
         const countPlus=ref(10)
         const countMinus=ref(10)
+        
+        //다음은 event.target와 event.currentTarget차이를 파악하기 위해 만든 코딩이다.--------------------------
+        const onClick=()=>{ alert('이벤트발생 종류:'+event.currentTarget)   }
+        //event.currentTarget을 해줘야..이벤트가 해당 버튼위 글씨나 버튼자체나 일관된게 적용이 된다.
+        //event.target를 하면 글씨를 클릭하면 글씨에 적용한 span태그가 발생하고 글씨를 피해서 버튼을 클릭하면 버튼에 이벤트가 발생한 메세지가 뜬다
+        //---------------------------------------------------------------------------------------------
         function increment(){
           countPlus.value++   //ref()를 쓴경우에는 value를 붙여서 사용한다.
                             }  
-        function decrement(){
-          countMinus.value--
-        }
+
+        const decrement=()=>{countMinus.value--}
+      //하단의 function decrement()와 같음
+        // function decrement(){
+        //   countMinus.value--
+        // }
         
         return{
           countPlus,
           countMinus,
           increment,
           decrement,
+          onClick,
         }
       }
     }).mount('#app')
