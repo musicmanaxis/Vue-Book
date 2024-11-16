@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{totalAge()}}
+  </div>
+
+<script type="module">
+import {createApp, ref, reactive} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+createApp({
+  setup(){
+    const items=reactive([
+      {id:1, name:'erlia', age:22},
+      {id:2, name:'martin', age:30},
+      {id:3, name:'ace', age:45},
+      {id:4, name:'axis', age:54},
+    ])
+
+    function totalAge(){
+      return items.reduce((acc, cur)=>acc+cur.age, 0)
+    }
+
+    //reduce()는 배열의 함수이다.인자로(콜백함수, 배열인덱스의 초기값)
+
+    return{
+      items,
+      totalAge,
+    }
+  }
+}).mount('#app')
+</script>
+
+</body>
+</html>
