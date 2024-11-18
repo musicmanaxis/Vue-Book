@@ -9,11 +9,13 @@
   <div id="app">
     <span ref="pTag">하이</span>   <br>
       <!-- 1.ref="pTag" 이부분을 pTag=ref()로 연결함 -->
-    <button @click='buttonEvent'>Click!!</button>
+    <button @click='buttonEvent'>Click!!</button> <br>
+    <!-- @click='buttonEvent'->아래에서 작성한 함수를 연결 -->
 
+   <input ref='inputTag'>
   </div>
   <script type="module">
-    import {createApp, ref, reactive, computed} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    import {createApp, ref, reactive, computed, onMounted} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
     createApp({
       setup(){
@@ -21,11 +23,16 @@
           function  buttonEvent(){
             alert(pTag.value)  //pTag.value -><p>를 의미함, ref()로 생성한 것은 value로 접근
             pTag.value.textContent="안녕하세요..."
-           
-          }
+           }
+
+          const inputTag=ref()
+          //웹페이지가 로딩할 때 바로 실행할 로직을 작성하는 것이 onMounted()이다.
+          onMounted(()=>{inputTag.value.focus()})
+          //여기서는 최초 페이지가 로딩될때 input태그에 포커스가 기본으로 위치하게끔 만들었다.
         return{
           pTag,
           buttonEvent,
+          inputTag,
         }
       }
     }).mount('#app')
