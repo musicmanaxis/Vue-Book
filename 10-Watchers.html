@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input ref="inputTag" v-model="name"> <br>
+            <span>{{errMessage}}</span>
+    </div>
+
+    <script type="module" >
+         import {createApp, ref, reactive, computed, onMounted, watch} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+         
+         createApp({
+            setup(){ 
+                const name=ref('') 
+                const errMessage=ref('')
+                const inputTag=ref('')
+
+                // watch(감시하고자 하는 대상, 대상이 변했을때 실행하는 함수)
+                watch(name, (name)=>{
+                    if(name.length > 10){
+                      errMessage.value="문자가 10개를 초과합니다."
+                    }
+                    else{
+                        errMessage.value=""
+                    }
+                })
+
+                onMounted(()=>{inputTag.value.focus()})      
+
+                return{
+                    name, 
+                    errMessage,
+                    inputTag
+                }
+             }
+            }).mount('#app')
+
+    </script>
+</body>
+</html>
