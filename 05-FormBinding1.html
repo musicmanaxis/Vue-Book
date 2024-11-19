@@ -11,7 +11,8 @@
    -->
   <div id="app">
     <input :value="text11" @input="onInput" placeholder="값을 입력하세요" size="50"> <br>
-    <!-- 양방향을 위해서는 :value처럼 바인딩도 해줘야 하고 바인딩한 value값에 입력하는 이벤트도 처리해줘야 한다. input속성중 value는 화면 입력란에 보여지는 값을 말한다.  -->
+    <!-- 양방향을 위해서는 :value처럼 바인딩도 해줘야 하고 바인딩한 value값에 입력하는 이벤트도 처리해줘야 한다. 
+        input속성중 value는 화면 입력란에 보여지는 값을 말한다.  -->
     <span>{{text11}}</span>
   </div>
   <script type="module" >
@@ -22,6 +23,7 @@
         const text11=ref('input태그의 value값 설정으로 보여지는 문자')
         function onInput(e){
           text11.value=e.target.value   //e.target : 이벤트가 발생한 요소를 의미(여기선 input태그)
+          //text11이 ref()로 만들어졌으므로 value로 접근한다.
           console.log("이벤트가 발생한 요소:"+e.target)
         }
         return{

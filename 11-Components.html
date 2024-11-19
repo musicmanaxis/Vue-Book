@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components</title>
+  <!-- 컴포넌트는 프로그래머가 유저용태그를 새로 만든다고 생각해라 
+   SFC(single file component를 이용한 작성은 더 간단하다...편리..검색해보삼)-->
+</head>
+
+<body>
+<div id="app">
+  <child-comp></child-comp>
+  <!-- 등록한 것은 이런 표기로 사용한다.  kebab-case:소문자로만 이루어지고 단어구분에 데쉬가 들어간다. -->
+</div>
+
+  <script type="module" >
+    import {createApp, ref, reactive, computed, onMounted, watch} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    import ChildComp from './js/child-comp.js'
+    //1.자바스크립트에서 작성한 것을 가져와서
+
+    createApp({
+      components:{
+        ChildComp   //2.이런식으로 등록을 한다.
+      },
+      setup(){
+        return{
+
+        }
+      }
+    }).mount('#app')
+
+  </script>
+</body>
+</html>
