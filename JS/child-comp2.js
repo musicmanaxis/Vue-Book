@@ -1,6 +1,7 @@
 export default{
-  props:{   //부모가 넘겨준 데이터를 이런식으로 정의하고 받아온다.
-    msg:String,
+    // 부모가(12-Porps.html에서) 넘겨준 데이터(임의의 이름->:msg='hello' name='마종호')를 받아온다.
+  props:{ 
+    msg:String,    //정의한 이름:데이터 타입
     name:String,
   },
   template:
