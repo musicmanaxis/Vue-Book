@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emits</title>
+  <!-- Emits:자식 컴포넌트에서 부모 컴포넌트로 데이터를 전달하는 방법 -->
+</head>
+<body>
+  <div id="app">
+    <child-comp :msg='hello' @response="WhoAmI"> </child-comp>
+    <!-- 버튼을 생성해서 클릭하면 {{who}}부분에 이름이 바뀌는 것을 하고자 한다.
+     @response처럼 임의의 이벤트로 등록을 해줘야 자식컴포넌트에서 데이터를 전달할 수 있다. -->
+    <h2>{{who}}</h2>
+  </div>
+
+  <script type="module" >
+    import {createApp, ref, reactive, computed, onMounted, watch} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    import ChildComp from './js/child-comp3.js'
+
+    createApp({
+      components:{
+        ChildComp
+      },
+      setup(){
+          const hello=ref('Hellow Emits!!')
+          const who=ref('누구냐 너는?')
+          function WhoAmI(person){
+            who.value=person
+          }
+        return{
+          hello,
+          who,
+          WhoAmI
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>
